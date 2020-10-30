@@ -5,7 +5,7 @@ from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor, QPixmap, QIcon
 from PyQt5.QtWidgets import qApp, QMessageBox, QAction, QSystemTrayIcon, QApplication, QMenu
-from .threads import MainInfo_Thread
+from .threads import MainInfo_Thread, Update_Thread
 from UI.main import Ui_MainWindow
 from .common import openBrowser
 from . import defines
@@ -28,8 +28,10 @@ class fun_main(Ui_MainWindow, QtWidgets.QMainWindow):
         self.simpleUI()
         self.init_systray()
         self.cookies = cookies
+        self.version = defines.version
         # 线程启动
         self.mainThread()
+        self.updateThread()
 
     def signalOnButton(self):
         self.pushButton_close.clicked.connect(self.hide)
@@ -81,20 +83,20 @@ class fun_main(Ui_MainWindow, QtWidgets.QMainWindow):
         self.LogoutAction = QAction('退出登录', self)
         self.FeedbackAction = QAction("官方网站", self)
         self.RestoreAction = QAction('显示主界面', self)  # 添加一级菜单动作选项(还原主窗口)
-        # self.UpdateAction = QAction('检查更新', self)
+        self.UpdateAction = QAction('检查更新', self)
         self.QuitAction = QAction('退出程序', self)  # 添加一级菜单动作选项(退出程序)
         self.RestoreAction.triggered.connect(self.show)
         self.QuitAction.triggered.connect(self.winClose)
         self.LogoutAction.triggered.connect(self.signOut)
         self.FeedbackAction.triggered.connect(lambda: openBrowser("https://new.toodo.fun"))
-        # self.UpdateAction.triggered.connect(lambda: self.update_thread(auto=False))
+        self.UpdateAction.triggered.connect(lambda: self.updateThread(auto=False))
         self.tray_coin.setIcon(qtawesome.icon('fa.btc', color="blank"))
         self.tray_balance.setIcon(qtawesome.icon('fa.flash', color='blank'))
         self.tray_follower.setIcon(qtawesome.icon('fa.user', color='blank'))
         self.LogoutAction.setIcon(qtawesome.icon('fa.sign-out', color="blank"))
         self.FeedbackAction.setIcon(qtawesome.icon('fa.envelope-o', color="blank"))
         self.RestoreAction.setIcon(qtawesome.icon('fa.home', color='blank'))
-        # self.UpdateAction.setIcon(qtawesome.icon('fa.refresh', color='blank'))
+        self.UpdateAction.setIcon(qtawesome.icon('fa.refresh', color='blank'))
         self.QuitAction.setIcon(qtawesome.icon('fa.sign-out', color='blank'))
         self.tray_menu.addAction(self.NicknameAction)
         self.tray_menu.addAction(self.tray_coin)
@@ -104,7 +106,7 @@ class fun_main(Ui_MainWindow, QtWidgets.QMainWindow):
         self.tray_menu.addSeparator()
         self.tray_menu.addAction(self.FeedbackAction)
         self.tray_menu.addAction(self.RestoreAction)  # 为菜单添加动作
-        # self.tray_menu.addAction(self.UpdateAction)
+        self.tray_menu.addAction(self.UpdateAction)
         self.tray_menu.addAction(self.QuitAction)
         self.tray.setContextMenu(self.tray_menu)  # 设置系统托盘菜单
         # self.tray.messageClicked.connect(self.notify_clicked)
@@ -115,6 +117,31 @@ class fun_main(Ui_MainWindow, QtWidgets.QMainWindow):
         if reason == 2 or reason == 3:
             self.show()
             self.activateWindow()  # 将软件临时置顶
+
+    def updateThread(self, auto=True):
+        try:
+            self.update_Thread = Update_Thread(auto)
+            self.update_Thread.display_signal.connect(self.Update_UI)
+            self.update_Thread.start()
+        except:
+            QMessageBox.information(self, '小助手提示', '程序运行异常，请确定网络连接是否正常，然后尝试重启客户端，如问题还未解决，请点击反馈按钮留言')
+
+    def Update_UI(self, msm):
+        if msm['Version'] == self.version:
+            if msm["auto"] == False:
+                QMessageBox.information(self, '小助手提示', '已经是最新版本')
+            else:
+                pass
+        else:
+            reply = QtWidgets.QMessageBox.question(self,
+                                                   '发现新版本，是否立即更新',
+                                                   f'发现新版本：V{msm["Version"]}，更新内容如下：\n\n{msm["Update_des"]}\n\n是否立即更新?',
+                                                   QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+                                                   QtWidgets.QMessageBox.No)
+            if reply == QtWidgets.QMessageBox.Yes:
+                openBrowser(msm["Update_url"])
+            else:
+                pass
 
     def mainThread(self):
         try:

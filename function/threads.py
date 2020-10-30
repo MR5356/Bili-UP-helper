@@ -1,9 +1,11 @@
+import json
 import time
 import qrcode
 import requests
 from PyQt5.QtCore import QThread, pyqtSignal
 from .common import Bilibili
 import datetime
+from . import defines
 
 
 class Login_Thread(QThread):
@@ -88,3 +90,22 @@ class MainInfo_Thread(QThread):
 
     def stop(self):
         self.Flag = False
+
+
+class Update_Thread(QThread):
+    display_signal = pyqtSignal(dict)
+
+    def __init__(self, auto):
+        super().__init__()
+        self.auto = auto
+
+    def run(self):
+        try:
+            result = json.loads(requests.get(defines.update_url, timeout=3).text)
+            if self.auto:
+                result["auto"] = True
+            else:
+                result["auto"] = False
+            self.display_signal.emit(result)
+        except Exception as e:
+            print(e)

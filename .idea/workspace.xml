@@ -27,6 +27,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.哔哩哔哩UP主助手">
     <configuration name="哔哩哔哩UP主助手" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -114,30 +115,34 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="261" key="GridCell.Tab.0.bottom" timestamp="1604055497926">
+    <state width="1899" height="261" key="GridCell.Tab.0.bottom" timestamp="1604059296909">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1515" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1603875563836" />
-    <state width="1899" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604055497926" />
+    <state width="1899" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604059296909" />
     <state width="1899" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604027051804" />
-    <state width="1899" height="261" key="GridCell.Tab.0.center" timestamp="1604055497926">
+    <state width="1899" height="261" key="GridCell.Tab.0.center" timestamp="1604059296909">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1515" height="261" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1603875563836" />
-    <state width="1899" height="261" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604055497926" />
+    <state width="1899" height="261" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604059296909" />
     <state width="1899" height="261" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604027051804" />
-    <state width="1899" height="261" key="GridCell.Tab.0.left" timestamp="1604055497926">
+    <state width="1899" height="261" key="GridCell.Tab.0.left" timestamp="1604059296909">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1515" height="261" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1603875563836" />
-    <state width="1899" height="261" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604055497926" />
+    <state width="1899" height="261" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604059296909" />
     <state width="1899" height="261" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604027051804" />
-    <state width="1899" height="261" key="GridCell.Tab.0.right" timestamp="1604055497926">
+    <state width="1899" height="261" key="GridCell.Tab.0.right" timestamp="1604059296909">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1515" height="261" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1603875563836" />
-    <state width="1899" height="261" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604055497926" />
+    <state width="1899" height="261" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604059296909" />
     <state width="1899" height="261" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604027051804" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1604056140325">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604056140325" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1604045771763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -24,7 +24,7 @@ class login_UI(Ui_Dialog, QtWidgets.QDialog):
         self.pushButton_bottom.clicked.connect(lambda: openBrowser(defines.Login_bottom_url))
         self.pushButton_bottom.setText(defines.Login_bottom)
         self.pushButton_bottom.setToolTip(f"点击查看我的B站主页")
-        self.label_version.setText(defines.version)
+        self.label_version.setText(f"当前版本：{defines.version}")
         self.label_version.setToolTip(f"当前版本：{defines.version}")
         try:
             self.login_Thread = Login_Thread()
